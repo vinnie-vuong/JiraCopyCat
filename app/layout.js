@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
+import { shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: shadesOfPurple,
+      }}
+    >
       <html lang="en">
         <body className={`${inter.className}`}>
           <ThemeProvider attribute="class" defaultTheme="dark">
