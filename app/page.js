@@ -9,6 +9,8 @@ import { Calendar } from "lucide-react";
 import { BarChart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import CompanyCarousel from "@/components/company-carousel";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import faqs from "@/data/faqs"
 
 const features = [
   {
@@ -86,7 +88,25 @@ export default function Home() {
           <h3 className="text-3xl font-bold mb-12 text-center">
             Trusted by Industry Leaders
           </h3>
-          <CompanyCarousel/>
+          <CompanyCarousel />
+        </div>
+      </section>
+
+      <section className="bg-gray-900 py-20 px-5">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold mb-12 text-center">
+            Frequently Asked Questions
+          </h3>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
     </div>
