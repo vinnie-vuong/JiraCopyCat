@@ -1,7 +1,14 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Layout } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { BarChart } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import CompanyCarousel from "@/components/company-carousel";
 
 const features = [
   {
@@ -57,15 +64,31 @@ export default function Home() {
         </Link>
       </section>
 
-      <section>
-        <div>
-          <h3>Key Features</h3>
-          <div>
-
+      <section id="features" className="bg-gray-900 py-20 px-5">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold mb-12 text-center">Key Features</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => {
+              return (<Card key={index} className="bg-gray-800">
+                <CardContent className="pt-6">
+                  <feature.icon className="h-12 w-12 mb-4 text-blue-300" />
+                  <h4 className="text-xl font-semibold mb-2">{feature.title}</h4>
+                  <p className="text-gray-300">{feature.description}</p>
+                </CardContent>
+              </Card>)
+            })}
           </div>
         </div>
       </section>
+
+      <section className="py-20">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold mb-12 text-center">
+            Trusted by Industry Leaders
+          </h3>
+          <CompanyCarousel/>
+        </div>
+      </section>
     </div>
-    
   );
 }
