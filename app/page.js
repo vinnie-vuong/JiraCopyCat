@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Layout } from "lucide-react";
@@ -107,6 +107,23 @@ export default function Home() {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+
+      <section className="py-20 text center px-5">
+        <div className="container mx-auto text-center">
+          <h3 className="text-3xl font-bold mb-6 text-center">
+            Ready to transform your workflow?
+          </h3>
+          <p>
+            Join thousands of teams already using ZCRUM to streamline their
+            projects and boost productivity.
+          </p>
+          <Link href="/onboarding">
+            <Button size="lg" className="animate-bounce mt-10">
+              Start For Free <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>
