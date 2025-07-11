@@ -14,9 +14,10 @@ export const metadata = {
   description: "Project management app",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <ClerkProvider
+      dynamic
       appearance={{
         baseTheme: shadesOfPurple,
         variables: {
