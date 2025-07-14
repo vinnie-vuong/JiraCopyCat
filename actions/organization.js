@@ -2,10 +2,9 @@
 
 import { db } from '@/lib/prisma';
 import { auth, clerkClient } from '@clerk/nextjs/server';
-import React from 'react'
 
 const getOrganization = async (slug) => {
-  const { userId } = auth(); // get currently logged in user
+  const { userId } = await auth(); // get currently logged in user
 
   if (!userId) { 
     throw new Error("Unauthorized!");
@@ -21,7 +20,7 @@ const getOrganization = async (slug) => {
   }
 
   // get the currently logged in organization
-  const organization = (await clerkClient()).organizations.getOrganization({
+  const organization = await (await clerkClient()).organizations.getOrganization({
     slug
   })
 
@@ -30,8 +29,8 @@ const getOrganization = async (slug) => {
   }
 
   // get organization members
-  const { data: membership } = (await clerkClient()).organizations.getOrganizationMembershipList({
-    organizationId: organization.id
+  const { data: membership } = await (await clerkClient()).organizations.getOrganizationMembershipList({
+    organizationId: organization.id,
   })
 
   // check if the logged in user has membership of the organization
