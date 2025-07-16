@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server"
 
@@ -14,7 +16,7 @@ export async function createProject (data) {
 
   // get the currently logged in organization
   const organization = await (await clerkClient()).organizations.getOrganization({
-    slug
+    slug: orgId,
   })
 
   if (!organization) {
