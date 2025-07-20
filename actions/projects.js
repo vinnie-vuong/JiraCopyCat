@@ -127,7 +127,7 @@ export async function getProject(projectId) {
   });
 
   if (!project) {
-    throw new Error("Project not found");
+    return null;
   }
 
   // Verify project belongs to the organization
